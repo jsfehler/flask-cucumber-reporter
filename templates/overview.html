@@ -1,0 +1,105 @@
+<html>
+    <head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename=css_style + '.css') }}">
+    </head>
+    <body>
+        <div class="row">
+          <div class="core_block header">
+            <h1 class="no_select">
+              Report
+            </h1>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="core_block features">
+            <h2 class="no_select">
+              Scenario Stats
+            </h2>
+
+            <div>
+              Total Passed: {{ general_stats.all_scenarios_passed }}
+            </div>
+
+            <div>
+              Total Failed: {{ general_stats.all_scenarios_failed }}
+            </div>
+          </div>
+
+          <div class="core_block details">
+            <h2 class="no_select">
+              Feature Stats
+            </h2>
+            <div>
+              Total Passed: {{ general_stats.all_features_passed }}
+            </div>
+
+            <div>
+              Total Failed: {{ general_stats.all_features_failed }}
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="core_block overview">
+            <h2 class="no_select">
+              Overview
+            </h2>
+
+            <div class="table_container">
+                Show Passing Features
+                <input type="checkbox">
+                {% for feature in cucumber_output %}
+                  <div class="{{'divTable blueTable ' + feature.status}}">
+                    <div class="divTableHeading">
+                      <div class="divTableRow">
+                        <div class="divTableHead">&nbsp;Feature</div>
+                        <div class="divTableHead">&nbsp;Status</div>
+                        <div class="divTableHead">&nbsp;Total</div>
+                        <div class="divTableHead">&nbsp;Passed</div>
+                        <div class="divTableHead">&nbsp;Failed</div>
+                        <div class="divTableHead">&nbsp;Skipped</div>
+                      </div>
+                    </div>
+
+                    <div class="divTableBody">
+                      <div class="{{'divTableRow ' + feature.status}}">
+                        <div class="divTableCell"><a href="#">{{ feature.name }}</a></div>
+                        <div class="divTableCell">{{ feature.percentage_status }}%</div>
+                        <div class="divTableCell">{{ feature.elements|length }}</div>
+                        <div class="divTableCell">{{ feature.passed }}</div>
+                        <div class="divTableCell">{{ feature.failed}}</div>
+                        <div class="divTableCell">0</div>
+                      </div>
+                      <br>
+                      <div class="divTable blueTable scenarioTable">
+                        <div class="divTableHeading">
+                          <div class="{{'divTableRow ' + feature.status}}">
+                            <div class="divTableHead">&nbsp;Scenarios</div>
+                            <div class="divTableHead">&nbsp;Result</div>
+                            <div class="divTableHead">&nbsp;Tags</div>
+                          </div>
+                        </div>
+                          {% for scenario in feature.elements %}
+                            <div class="{{'divTableRow ' + scenario.status}}">
+                              <div class="divTableCell"><a href="#">{{ scenario.name }}</a></div>
+                              <div class="{{'divTableCell ' + scenario.status}}">{{ scenario.status }}</div>
+                              <div class="divTableCell">
+                                {% for tag in scenario.tags %}
+                                  {{ tag.name }}
+                                {% endfor %}
+                              </div>
+                            </div>
+                          {% endfor %}
+                      </div>
+                      <br>
+                      </div>
+                  </div>
+                {% endfor %}
+              </div>
+           </div>
+        </div>
+    </body>
+</html>

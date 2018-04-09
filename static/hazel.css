@@ -1,0 +1,165 @@
+.no_select {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+body {
+  background-color: #1E160D;
+  color: #FFD2A0;
+  font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+}
+
+a {
+  color: #FF8700;
+}
+
+h1,
+h2 {
+  padding: 1rem;
+}
+
+.row {
+  margin: 1rem;
+}
+
+.core_block {
+  background-color: #613E17;
+}
+
+.header {
+  width: 100%;
+}
+
+.features {
+  display: inline-block;
+}
+
+.details {
+  display: inline-block;
+}
+
+.table_container {
+    margin: 1rem;
+}
+
+.divTableRow.passed {
+    display: None;
+}
+
+.divTable.blueTable.passed {
+    display: None;
+}
+
+.table_container input:checked ~ .divTable.blueTable.passed {
+  display: table;
+}
+
+.table_container input:checked ~ .divTable .divTableBody .divTableRow.passed {
+  display: table-row;
+}
+
+.scenarioTable {
+    margin-left: 1rem;
+}
+
+.divTableCell.failed {
+    background-color: #A10A2D;
+}
+
+.divTableCell.passed {
+    background-color: #3F990A;
+}
+
+/* DivTable.com */
+
+div.blueTable {
+  background-color: None;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.divTable.blueTable .divTableCell,
+.divTable.blueTable .divTableHead {
+  border: 1px solid #FFD2A0;
+  padding: 3px 2px;
+}
+
+.divTable.blueTable .divTableBody .divTableCell {
+  font-size: 12px;
+  color: #FFD2A0;
+}
+
+.divTable.blueTable .divTableRow:nth-child(odd) {
+  background: #1E1B0D;
+}
+
+
+.divTable.blueTable .divTableRow:nth-child(even) {
+  background: #1E190D;
+}
+
+
+.divTable.blueTable .divTableHeading .divTableHead {
+  font-size: 14px;
+  font-weight: bold;
+  background: #AF620B;
+  color: #FFD2A0;
+  text-align: left;
+}
+
+.blueTable .tableFootStyle {
+  font-size: 14px;
+}
+
+.blueTable .tableFootStyle .links {
+  text-align: right;
+}
+
+.blueTable .tableFootStyle .links a {
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FF8700;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+.blueTable.outerTableFooter {
+  border-top: none;
+}
+
+.blueTable.outerTableFooter .tableFootStyle {
+  padding: 3px 5px;
+}
+
+/* DivTable.com */
+
+.divTable {
+  display: table;
+}
+
+.divTableRow {
+  display: table-row;
+}
+
+.divTableHeading {
+  display: table-header-group;
+}
+
+.divTableCell,
+.divTableHead {
+  display: table-cell;
+}
+
+.divTableFoot {
+  display: table-footer-group;
+}
+
+.divTableBody {
+  display: table-row-group;
+}
