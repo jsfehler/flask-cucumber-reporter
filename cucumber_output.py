@@ -11,7 +11,10 @@ def get_feature_totals(feature):
     scenarios = feature['elements']
 
     for scenario in scenarios:
+        scenario['duration'] = 0
         for step in scenario['steps']:
+            # Get the scenario's duration by combining the step duration
+            scenario['duration'] += step['result']['duration']
             if step['result']['status'] == 'failed':
                 scenarios_failed += 1
                 scenario['status'] = 'failed'
@@ -30,6 +33,20 @@ def get_feature_totals(feature):
     feature["percentage_status"] = (scenarios_passed / len(scenarios)) * 100
 
     return feature
+
+
+def get_slowest_scenario(cucumber_output):
+    slowest_scenario = None
+    slowest_scenario_duration = 0
+
+    for feature in cucumber_output:
+        scenarios = feature['elements']
+        for scenario in scenarios:
+            if scenario['duration'] > slowest_scenario_duration:
+                slowest_scenario = scenario
+                slowest_scenario_duration = scenario['duration']
+
+    return slowest_scenario
 
 
 def prepare_feature_data(cucumber_output):
@@ -53,7 +70,8 @@ def prepare_feature_data(cucumber_output):
         "all_scenarios_failed": all_scenarios_failed,
         "all_scenarios_passed": all_scenarios_passed,
         "all_features_failed": all_features_failed,
-        "all_features_passed": all_features_passed
+        "all_features_passed": all_features_passed,
+        "slowest_scenario": get_slowest_scenario(cucumber_output),
     }
 
     return data
