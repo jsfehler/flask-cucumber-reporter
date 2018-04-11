@@ -4,7 +4,7 @@
     </head>
     <body>
         <div class="row">
-          <div class="core_block header">
+          <div class="header">
             <h1 class="no_select">
               Report
             </h1>
@@ -14,45 +14,63 @@
 
         <div class="row">
           <div class="core_block features">
-            <h2 class="no_select">
-              Scenario Stats
-            </h2>
 
-            <div>
-              Total Passed: {{ general_stats.all_scenarios_passed }}
+            <div class="core_block_header">
+              <h2 class="no_select">
+                Scenario Stats
+              </h2>
             </div>
 
-            <div>
-              Total Failed: {{ general_stats.all_scenarios_failed }}
+            <div class="core_block_content">
+              <div>
+                Total Passed: {{ general_stats.all_scenarios_passed }}
+              </div>
+
+              <div>
+                Total Failed: {{ general_stats.all_scenarios_failed }}
+              </div>
+
+              <br>
+
+              <div>
+              Slowest Scenario: {{ general_stats.slowest_scenario.name }}
+              <br>
+              Duration: {{ general_stats.slowest_scenario.duration }}
+              </div>
             </div>
-            <br>
-            <div>
-            Slowest Scenario: {{ general_stats.slowest_scenario.name }}
-            <br>
-            Duration: {{ general_stats.slowest_scenario.duration }}
-            </div>
+
           </div>
 
           <div class="core_block details">
-            <h2 class="no_select">
-              Feature Stats
-            </h2>
-            <div>
-              Total Passed: {{ general_stats.all_features_passed }}
+
+            <div class="core_block_header">
+              <h2 class="no_select">
+                Feature Stats
+              </h2>
             </div>
 
-            <div>
-              Total Failed: {{ general_stats.all_features_failed }}
+            <div class="core_block_content">
+              <div>
+                Total Passed: {{ general_stats.all_features_passed }}
+              </div>
+
+              <div>
+                Total Failed: {{ general_stats.all_features_failed }}
+              </div>
             </div>
+
           </div>
 
         </div>
 
         <div class="row">
           <div class="core_block overview">
-            <h2 class="no_select">
-              Overview
-            </h2>
+
+              <div class="core_block_header">
+                <h2 class="no_select">
+                  Overview
+                </h2>
+              </div>
 
             <div class="table_container">
                 Show Passing Features

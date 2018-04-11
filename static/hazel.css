@@ -21,6 +21,7 @@ a {
 h1,
 h2 {
   padding: 1rem;
+  margin: 0;
 }
 
 .row {
@@ -28,10 +29,20 @@ h2 {
 }
 
 .core_block {
-  background-color: #613E17;
+  border: 1px solid #a0522d;
 }
 
+.core_block_header {
+  background-color: #a0522d;
+}
+
+.core_block_content {
+    margin: 1rem;
+}
+
+
 .header {
+  background-color: #a0522d;
   width: 100%;
 }
 
@@ -86,7 +97,7 @@ div.blueTable {
 
 .divTable.blueTable .divTableCell,
 .divTable.blueTable .divTableHead {
-  border: 1px solid #FFD2A0;
+  border: 1px solid #a0522d;
   padding: 3px 2px;
 }
 
@@ -108,7 +119,7 @@ div.blueTable {
 .divTable.blueTable .divTableHeading .divTableHead {
   font-size: 14px;
   font-weight: bold;
-  background: #AF620B;
+  background: #a0522d;
   color: #FFD2A0;
   text-align: left;
 }
