@@ -1,0 +1,89 @@
+.no_select {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+h1,
+h2 {
+  padding: 1rem;
+  margin: 0;
+}
+
+.row {
+  margin: 1rem;
+}
+
+.core_block_content {
+    margin: 1rem;
+}
+
+.features, .details {
+  display: inline-block;
+}
+
+.header {
+  width: 100%;
+}
+
+
+/* Table */
+.table-container {
+  margin: 1rem;
+}
+
+.div-table.passed, .div-table-row.passed {
+  display: None;
+}
+
+.scenario-table {
+    margin-left: 1rem;
+}
+
+.div-table {
+  border-collapse: collapse;
+  display: table;
+  text-align: left;
+  width: 100%;
+}
+
+.div-table-row {
+  display: table-row;
+}
+
+.div-table-heading {
+  display: table-header-group;
+}
+
+.div-table-body {
+  display: table-row-group;
+}
+
+.div-table-cell,
+.div-table-head {
+  display: table-cell;
+  padding: 3px 2px;
+}
+
+.div-table-head {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.div-table-cell {
+  font-size: 12px;
+}
+
+/* Table: Toggles the scenario detail view */
+.table-container input:checked ~ .div-table.passed {
+  display: table;
+}
+
+.table-container input:checked ~ .div-table .div-table-body .div-table-row.passed {
+  display: table-row;
+}

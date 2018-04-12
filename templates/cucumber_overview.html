@@ -2,7 +2,8 @@
 
 <html>
     <head>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename=css_style + '.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='base.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename=css_style + '.css') }}">
     </head>
     <body>
         <div class="row">
@@ -40,9 +41,9 @@
               <br>
 
               <div>
-              Slowest Scenario: {{ general_stats.slowest_scenario.name }}
+                Slowest Scenario: {{ general_stats.slowest_scenario.name }}
               <br>
-              Duration: {{ general_stats.slowest_scenario.duration }}
+                Duration: {{ general_stats.slowest_scenario.duration }}
               </div>
             </div>
 
@@ -84,51 +85,51 @@
                 </h2>
               </div>
 
-            <div class="table_container">
+            <div class="table-container">
                 Show Passing Features
                 <input type="checkbox">
                 {% for feature in cucumber_output %}
-                  <div class="{{'divTable blueTable ' + feature.status}}">
-                    <div class="divTableHeading">
-                      <div class="divTableRow">
-                        <div class="divTableHead">&nbsp;Feature</div>
-                        <div class="divTableHead">&nbsp;Status</div>
-                        <div class="divTableHead">&nbsp;Total</div>
-                        <div class="divTableHead">&nbsp;Passed</div>
-                        <div class="divTableHead">&nbsp;Failed</div>
-                        <div class="divTableHead">&nbsp;Skipped</div>
+                  <div class="{{'div-table ' + feature.status}}">
+                    <div class="div-table-heading">
+                      <div class="div-table-row">
+                        <div class="div-table-head">&nbsp;Feature</div>
+                        <div class="div-table-head">&nbsp;Status</div>
+                        <div class="div-table-head">&nbsp;Total</div>
+                        <div class="div-table-head">&nbsp;Passed</div>
+                        <div class="div-table-head">&nbsp;Failed</div>
+                        <div class="div-table-head">&nbsp;Skipped</div>
                       </div>
                     </div>
 
-                    <div class="divTableBody">
-                      <div class="{{'divTableRow ' + feature.status}}">
-                        <div class="divTableCell"><a href="#">{{ feature.name }}</a></div>
-                        <div class="divTableCell">{{ feature.percentage_status }}%</div>
-                        <div class="divTableCell">{{ feature.elements|length }}</div>
-                        <div class="divTableCell">{{ feature.passed }}</div>
-                        <div class="divTableCell">{{ feature.failed}}</div>
-                        <div class="divTableCell">0</div>
+                    <div class="div-table-body">
+                      <div class="{{'div-table-row ' + feature.status}}">
+                        <div class="div-table-cell"><a href="#">{{ feature.name }}</a></div>
+                        <div class="div-table-cell">{{ feature.percentage_status }}%</div>
+                        <div class="div-table-cell">{{ feature.elements|length }}</div>
+                        <div class="div-table-cell">{{ feature.passed }}</div>
+                        <div class="div-table-cell">{{ feature.failed}}</div>
+                        <div class="div-table-cell">0</div>
                       </div>
                       <br>
-                      <div class="divTable blueTable scenarioTable">
-                        <div class="divTableHeading">
-                          <div class="{{'divTableRow ' + feature.status}}">
-                            <div class="divTableHead">&nbsp;Scenarios</div>
-                            <div class="divTableHead">&nbsp;Result</div>
-                            <div class="divTableHead">&nbsp;Tags</div>
-                            <div class="divTableHead">&nbsp;Duration</div>
+                      <div class="div-table scenario-table">
+                        <div class="div-table-heading">
+                          <div class="{{'div-table-row ' + feature.status}}">
+                            <div class="div-table-head">&nbsp;Scenarios</div>
+                            <div class="div-table-head">&nbsp;Result</div>
+                            <div class="div-table-head">&nbsp;Tags</div>
+                            <div class="div-table-head">&nbsp;Duration</div>
                           </div>
                         </div>
                           {% for scenario in feature.elements %}
-                            <div class="{{'divTableRow ' + scenario.status}}">
-                              <div class="divTableCell"><a href="#">{{ scenario.name }}</a></div>
-                              <div class="{{'divTableCell ' + scenario.status}}">{{ scenario.status }}</div>
-                              <div class="divTableCell">
+                            <div class="{{'div-table-row ' + scenario.status}}">
+                              <div class="div-table-cell"><a href="#">{{ scenario.name }}</a></div>
+                              <div class="{{'div-table-cell ' + scenario.status}}">{{ scenario.status }}</div>
+                              <div class="div-table-cell">
                                 {% for tag in scenario.tags %}
                                   {{ tag.name }}
                                 {% endfor %}
                               </div>
-                              <div class="divTableCell">{{ scenario.duration }}</div>
+                              <div class="div-table-cell">{{ scenario.duration }}</div>
                             </div>
                           {% endfor %}
                       </div>
