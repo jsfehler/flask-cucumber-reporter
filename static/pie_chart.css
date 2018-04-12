@@ -1,0 +1,22 @@
+.pie-container {
+  width: 150px;
+  height: 150px;
+  margin: 15px;
+  position: relative;
+}
+
+.donut-hole {
+  fill: #1E160D;
+}
+
+.donut-ring, .donut-segment {
+  stroke-width: 5;
+}
+
+.donut-segment.passed {
+  stroke: #00a300;
+}
+
+.donut-segment.failed {
+  stroke: #ee1111;
+}

@@ -56,10 +56,18 @@ def prepare_feature_data(cucumber_output):
     all_features_failed = 0
     all_features_passed = 0
 
+    number_of_features = 0
+    number_of_scenarios = 0
+
     for feature in cucumber_output:
+        number_of_features += 1
+        number_of_scenarios += len(feature["elements"])
+
         get_feature_totals(feature)
+
         all_scenarios_failed += feature["failed"]
         all_scenarios_passed += feature["passed"]
+
         if feature["failed"]:
             all_features_failed += 1
         else:
@@ -67,6 +75,8 @@ def prepare_feature_data(cucumber_output):
 
     data = {
         "cucumber_output": cucumber_output,
+        "number_of_features": number_of_features,
+        "number_of_scenarios": number_of_scenarios,
         "all_scenarios_failed": all_scenarios_failed,
         "all_scenarios_passed": all_scenarios_passed,
         "all_features_failed": all_features_failed,

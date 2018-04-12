@@ -1,3 +1,5 @@
+{% import 'pie_chart.html' as pie_chart %}
+
 <html>
     <head>
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename=css_style + '.css') }}">
@@ -20,6 +22,11 @@
                 Scenario Stats
               </h2>
             </div>
+
+            {{ pie_chart.pie_chart(
+              passing=(general_stats.all_scenarios_passed / general_stats.number_of_scenarios) * 100,
+              failing=(general_stats.all_scenarios_failed / general_stats.number_of_scenarios) * 100
+            )}}
 
             <div class="core_block_content">
               <div>
@@ -48,6 +55,11 @@
                 Feature Stats
               </h2>
             </div>
+
+            {{ pie_chart.pie_chart(
+              passing=(general_stats.all_features_passed / general_stats.number_of_features) * 100,
+              failing=(general_stats.all_features_failed / general_stats.number_of_features) * 100
+            )}}
 
             <div class="core_block_content">
               <div>
