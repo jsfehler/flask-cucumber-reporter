@@ -33,6 +33,18 @@ a {
   background-color: var(--brown);
 }
 
+.legend-container {
+    font-size: 12px;
+}
+
+.legend.passed {
+  background-color: var(--green);
+}
+
+.legend.failed {
+  background-color: var(--red);
+}
+
 /* Pie Chart */
 .donut-hole {
   fill: var(--dark-brown);

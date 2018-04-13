@@ -18,18 +18,33 @@ h2 {
   margin: 1rem;
 }
 
+.row > div {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.core_block > div {
+
+}
+
+.core_block.overview {
+    width: 100%;
+}
+
 .core_block_content {
     margin: 1rem;
 }
 
-.features, .details {
-  display: inline-block;
-}
 
 .header {
   width: 100%;
 }
 
+.legend {
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+}
 
 /* Table */
 .table-container {

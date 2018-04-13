@@ -16,62 +16,66 @@
         </div>
 
         <div class="row">
-          <div class="core_block features">
-
+          <div class="core_block">
             <div class="core_block_header">
               <h2 class="no_select">
                 Scenario Stats
               </h2>
             </div>
+            <div class="row">
+              {{ pie_chart.pie_chart(
+                passing=(general_stats.all_scenarios_passed / general_stats.number_of_scenarios) * 100,
+                failing=(general_stats.all_scenarios_failed / general_stats.number_of_scenarios) * 100
+              )}}
+              <div class="core_block_content">
+                <div class="legend-container">
+                  <div>
+                    <span class="legend passed"></span>
+                    Passed: {{ general_stats.all_scenarios_passed }}
+                  </div>
 
-            {{ pie_chart.pie_chart(
-              passing=(general_stats.all_scenarios_passed / general_stats.number_of_scenarios) * 100,
-              failing=(general_stats.all_scenarios_failed / general_stats.number_of_scenarios) * 100
-            )}}
-
-            <div class="core_block_content">
-              <div>
-                Total Passed: {{ general_stats.all_scenarios_passed }}
-              </div>
-
-              <div>
-                Total Failed: {{ general_stats.all_scenarios_failed }}
-              </div>
-
-              <br>
-
-              <div>
-                Slowest Scenario: {{ general_stats.slowest_scenario.name }}
-              <br>
-                Duration: {{ general_stats.slowest_scenario.duration }}
+                  <div>
+                    <span class="legend failed"></span>
+                    Failed: {{ general_stats.all_scenarios_failed }}
+                  </div>
+                </div>
               </div>
             </div>
 
+            <div>
+              Slowest Scenario: {{ general_stats.slowest_scenario.name }}
+              <br>
+              Duration: {{ general_stats.slowest_scenario.duration }}
+            </div>
           </div>
 
-          <div class="core_block details">
+          <div class="core_block">
 
             <div class="core_block_header">
               <h2 class="no_select">
                 Feature Stats
               </h2>
             </div>
+            <div class="row">
+              {{ pie_chart.pie_chart(
+                passing=(general_stats.all_features_passed / general_stats.number_of_features) * 100,
+                failing=(general_stats.all_features_failed / general_stats.number_of_features) * 100
+              )}}
 
-            {{ pie_chart.pie_chart(
-              passing=(general_stats.all_features_passed / general_stats.number_of_features) * 100,
-              failing=(general_stats.all_features_failed / general_stats.number_of_features) * 100
-            )}}
+              <div class="core_block_content">
+                <div class="legend-container">
+                  <div>
+                    <span class="legend passed"></span>
+                    Passed: {{ general_stats.all_features_passed }}
+                  </div>
 
-            <div class="core_block_content">
-              <div>
-                Total Passed: {{ general_stats.all_features_passed }}
-              </div>
-
-              <div>
-                Total Failed: {{ general_stats.all_features_failed }}
+                  <div>
+                    <span class="legend failed"></span>
+                    Failed: {{ general_stats.all_features_failed }}
+                  </div>
+                </div>
               </div>
             </div>
-
           </div>
 
         </div>
