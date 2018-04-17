@@ -7,24 +7,34 @@ def get_feature_totals(feature):
     """
     scenarios_failed = 0
     scenarios_passed = 0
+    scenarios_skipped = 0
 
     scenarios = feature['elements']
 
     for scenario in scenarios:
         scenario['duration'] = 0
         for step in scenario['steps']:
-            # Get the scenario's duration by combining the step duration
+            # Get the scenario's duration by combining the step duration.
             scenario['duration'] += step['result']['duration']
+
             if step['result']['status'] == 'failed':
                 scenarios_failed += 1
                 scenario['status'] = 'failed'
                 break
+
+            elif step['result']['status'] == 'skipped':
+                scenarios_skipped += 1
+                scenario['status'] = 'skipped'
+                break
+
         else:
             scenarios_passed += 1
             scenario['status'] = 'passed'
 
     feature['passed'] = scenarios_passed
     feature['failed'] = scenarios_failed
+    feature['skipped'] = scenarios_skipped
+
     if scenarios_failed == 0:
         feature['status'] = 'passed'
     else:
@@ -52,26 +62,31 @@ def get_slowest_scenario(cucumber_output):
 def prepare_feature_data(cucumber_output):
     all_scenarios_failed = 0
     all_scenarios_passed = 0
+    all_scenarios_skipped = 0
 
     all_features_failed = 0
     all_features_passed = 0
+    all_features_skipped = 0
 
     number_of_features = 0
     number_of_scenarios = 0
 
     for feature in cucumber_output:
         number_of_features += 1
-        number_of_scenarios += len(feature["elements"])
+        number_of_scenarios += len(feature['elements'])
 
         get_feature_totals(feature)
 
-        all_scenarios_failed += feature["failed"]
-        all_scenarios_passed += feature["passed"]
+        all_scenarios_failed += feature['failed']
+        all_scenarios_passed += feature['passed']
+        all_scenarios_skipped += feature['skipped']
 
-        if feature["failed"]:
+        if feature['failed']:
             all_features_failed += 1
-        else:
+        elif feature['passed']:
             all_features_passed += 1
+        elif feature['skipped']:
+            all_features_skipped += 1
 
     data = {
         "cucumber_output": cucumber_output,
@@ -79,8 +94,10 @@ def prepare_feature_data(cucumber_output):
         "number_of_scenarios": number_of_scenarios,
         "all_scenarios_failed": all_scenarios_failed,
         "all_scenarios_passed": all_scenarios_passed,
+        "all_scenarios_skipped": all_scenarios_skipped,
         "all_features_failed": all_features_failed,
         "all_features_passed": all_features_passed,
+        "all_features_skipped": all_features_skipped,
         "slowest_scenario": get_slowest_scenario(cucumber_output),
     }
 

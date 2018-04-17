@@ -7,4 +7,22 @@
 
 .donut-ring, .donut-segment {
   stroke-width: 5;
+  transform-origin: center center;
+}
+
+.donut-segment.passed {
+  animation: spin 2.2s ease;
+}
+
+.donut-segment.failed {
+  animation: spin 2.1s ease;
+}
+
+.donut-segment.skipped {
+  animation: spin 2s ease;
+}
+
+@keyframes spin {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
 }

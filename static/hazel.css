@@ -45,6 +45,10 @@ a {
   background-color: var(--red);
 }
 
+.legend.skipped {
+  background-color: var(--orange);
+}
+
 /* Pie Chart */
 .donut-hole {
   fill: var(--dark-brown);
@@ -56,6 +60,10 @@ a {
 
 .donut-segment.failed {
   stroke: var(--red);
+}
+
+.donut-segment.skipped {
+  stroke: var(--orange);
 }
 
 /* Table */
@@ -91,4 +99,8 @@ a {
 
 .div-table-cell.passed {
   background-color: var(--green);
+}
+
+.div-table-cell.skipped {
+  background-color: var(--orange);
 }

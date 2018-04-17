@@ -8,6 +8,9 @@
 
     <circle class="donut-segment passed" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke-dasharray="{{ passing }} {{ 100 - passing }}" stroke-dashoffset="25"></circle>
     <circle class="donut-segment failed" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke-dasharray="{{ failing }} {{ 100 - failing }}" stroke-dashoffset="{{ 100 - passing + 25 }}"></circle>
+    {% if skipped > 0 %}
+        <circle class="donut-segment skipped" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke-dasharray="{{ skipped }} {{ 100 - skipped }}" stroke-dashoffset="{{ 100 - (passing + failing) + 25 }}"></circle>
+    {% endif %}
   </svg>
 </div>
 {%- endmacro %}
